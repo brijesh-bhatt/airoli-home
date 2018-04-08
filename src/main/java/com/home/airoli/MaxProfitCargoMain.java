@@ -10,7 +10,7 @@ import com.home.airoli.bean.Cargo;
 
 public class MaxProfitCargoMain {
 
-	static int[] maxProfitCargo(int maxLoad, int[][] cargoList) {
+	static Integer[][] maxProfitCargo(int maxLoad, int[][] cargoList) {
 		List<Cargo> listCargo = new ArrayList<>();
 		for(int i=0; i<cargoList.length; i++) {
 			Cargo cargo = new Cargo(cargoList[i][0], cargoList[i][1], cargoList[i][2]);
@@ -52,12 +52,17 @@ public class MaxProfitCargoMain {
 			cargoIds.add(c.getId());
 		}
 		System.out.println("loadTruck, truckProfit, cargoIds: " + loadTruck + truckProfit + cargoIds);
-		return null;
+		Integer[][] arr = new Integer[1][2];
+		Integer[] arr1 = (Integer[]) cargoIds.toArray();
+		arr[0] = arr1;
+		arr[0][1] = truckProfit;
+		return arr;
 	}
 	
 	public static void main(String[] args) {
 		int[][] cargoList = { {38,130,500}, {21,280,1800}, {13,120,1500} };
 		int maxLoad = 300;
-		int[] arr = maxProfitCargo(maxLoad, cargoList);
+		//Integer[][] arr = maxProfitCargo(maxLoad, cargoList);
+		Integer[][] arr1 = MaxProfitCargoNew.maxProfitCargo(maxLoad, cargoList);
 	}
 }
